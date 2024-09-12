@@ -40,9 +40,11 @@ pip3 install -r dev_requirements.txt
 [//]: # (TODO: Add screenshots)
 Your Python interpreter might not be the right version(**Python 3.6+**). Change the Python versions in Pycharm.
 1. Add local interpreter
-2. Select the right interpreter version
+![Screenshot 2024-09-11 at 1 28 42 PM](https://github.com/user-attachments/assets/93b0815b-72e7-40ac-b865-c4f00c7627fa)
 
-![Screenshot 2024-09-11 at 1.28.42 PM.png](../../../../../../Desktop/Screenshot%202024-09-11%20at%201.28.42%E2%80%AFPM.png)
+3. Select the right interpreter version
+![Screenshot 2024-09-11 at 1 32 13 PM](https://github.com/user-attachments/assets/a4a881df-6e37-4a09-884c-dcece4daeefd)
+
 
 #### Running unit tests
 
