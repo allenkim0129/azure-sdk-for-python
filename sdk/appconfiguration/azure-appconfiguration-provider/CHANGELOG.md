@@ -1,14 +1,17 @@
 # Release History
 
-## 1.3.0b1 (Unreleased)
+## 2.0.0b1 (2024-09-11)
 
 ### Features Added
 
-### Breaking Changes
+* Added support for feature flag telemetry.
 
-### Bugs Fixed
+## 1.3.0 (2024-09-09)
 
-### Other Changes
+### Features Added
+
+* Added support for auto failover between replicas.
+* Added support for auto discovery of replicas.
 
 ## 1.2.0 (2024-05-24)
 
