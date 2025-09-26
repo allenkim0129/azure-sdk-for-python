@@ -18,7 +18,8 @@ from azure.cosmos import http_constants
 from azure.cosmos import _base as base
 
 PARTITION_KEY = 'pk'
-
+DEFAULT_NUMBER_OF_ITEMS = 100
+DEFAULT_PARTITION_KEY_VALUES = (19, 0, 1, 6, 7)
 def get_test_item():
     test_item = {
         'id': 'Item_' + str(uuid.uuid4()),
@@ -52,7 +53,7 @@ def create_body(partition_key_value):
     }
     return body
 
-def create_items(container, num_items=100, pk_values=(19, 0, 1, 6, 7)) -> List[ContainerProxy]:
+def create_items(container, num_items=DEFAULT_NUMBER_OF_ITEMS, pk_values=DEFAULT_PARTITION_KEY_VALUES) -> List[ContainerProxy]:
     items = []
     for i in range(num_items):
         body = create_body(pk_values[i % len(pk_values)])
@@ -303,6 +304,17 @@ class TestPartitionMergeQuery(unittest.TestCase):
         # target_num_feed_ranges = 1 # expect 1 feed range after merge
         assert len(feed_ranges) == self.expected_num_partitions
 
+    def test_delete_all_items_by_partition_key(self):
+        # create items
+        target_num_items = 100
+        created_items = create_items(self.container, target_num_items)
+        # created_items = create_items(self.container, target_num_items, DEFAULT_PARTITION_KEY_VALUES[:2])
+
+        # delete_all_items_by_partition_key
+        for pk_value in DEFAULT_PARTITION_KEY_VALUES[:1]:
+        # for pk_value in DEFAULT_PARTITION_KEY_VALUES:
+            print(f"Deleting all items with partition key value: {pk_value}")
+            self.container.delete_all_items_by_partition_key(pk_value)
 
 
 if __name__ == "__main__":
